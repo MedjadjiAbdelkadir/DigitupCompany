@@ -5,7 +5,7 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
-class UserFactory extends Factory
+class TaskFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -15,11 +15,10 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name(),
-            'email' => $this->faker->unique()->safeEmail(),
-            'email_verified_at' => now(),
-            'password' => 'password', // password
-            'remember_token' => Str::random(10),
+            'titre' => $this->faker->unique()->name(),
+            'description' => $this->faker->sentence(6),
+            'statut' => 'Waiting',
+            'due_date' => '2024-06-25',
         ];
     }
 

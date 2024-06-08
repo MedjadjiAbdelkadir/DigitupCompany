@@ -77,7 +77,7 @@ class TaskPolicy
      */
     public function restore(User $user, Task $task)
     {
-        //
+        return $user->role === 'admin';
     }
 
     /**

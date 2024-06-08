@@ -33,14 +33,14 @@ class TaskController extends Controller
             return response()->json([
                 'status' => true,
                 'data'  => new PaginateTaskCollection($tasks)
-            ], 201);
+            ], 200);
         }
 
         $tasks = $this->tasks->paginate(10);
         return response()->json([
             'status' => true,
             'data'  => new PaginateTaskCollection($tasks)
-        ], 201);
+        ], 200);
     }
 
     /**
@@ -124,13 +124,13 @@ class TaskController extends Controller
     {
 
         $task = $this->tasks->find($id);
-        $this->authorize('update', $task);
         if (!$task) {
             return response()->json([
                 "status"  => false,
                 "message" => "Task not found."
             ], 404);
         }
+        $this->authorize('update', $task);
         $taskupdate = $this->tasks->update($id, $request->all());
         return response()->json([
             "status"  => true,
@@ -149,6 +149,12 @@ class TaskController extends Controller
     {
         try {
             $task = $this->tasks->find($id);
+            if (!$task) {
+                return response()->json([
+                    "status"  => false,
+                    "message" => "Task not found."
+                ], 404);
+            }
             $this->authorize('delete', $task);
             $taskDelete = $this->tasks->delete($id);
             if (!$taskDelete) {
@@ -170,7 +176,9 @@ class TaskController extends Controller
         }
     }
 
-    public function restore(){
+    public function restore()
+    {
+        // $this->authorize('restore');
         $this->tasks->restoreAll();
         return response()->json([
             'status' => true,

@@ -16,9 +16,14 @@ use App\Http\Controllers\Api\Task\TaskController;
 |
 */
 
+// Route::middleware('auth:sanctum','auth.api')->get('/user', function (Request $request) {
+//     return response()->json($request->user());
+// });
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return response()->json($request->user());
 });
+
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('logout', [AuthController::class, 'logout']);
@@ -26,10 +31,11 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 
     Route::get('tasks', [TaskController::class, 'index']);
     Route::post('tasks', [TaskController::class, 'store']);
-    Route::post('tasks/{id}', [TaskController::class, 'show']);
+    Route::get('tasks/{id}', [TaskController::class, 'show']);
     Route::put('tasks/{id}', [TaskController::class, 'update']);
     Route::delete('tasks/{id}', [TaskController::class, 'destroy']);
-    Route::get('tasks/deleted', [TaskController::class, 'restore'])->middleware('role:admin');
+    // Route::get('tasks/deleted', [TaskController::class, 'restore'])->middleware('role:admin');
+    Route::get('taskss/deleted', [TaskController::class, 'restore'])->middleware('role:admin');
 
     // restore
 });
