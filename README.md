@@ -53,7 +53,7 @@ $ php artisan db:seed
 $ php artisan serve
 ```
 
-### Testing 
+### Run Test 
 ```bash
 # Go to file .env.testing
 
