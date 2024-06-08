@@ -22,7 +22,7 @@ DigitupCompany RESTful API clone.
 
 ```bash
 # Clone this repository
-$ git clone https://github.com/MedjadjiAbdelkadir/DigitupCompany.gitt`
+$ git clone https://github.com/MedjadjiAbdelkadir/DigitupCompany.git`
 # Go to the project directory
 $ cd DigitupCompany
 # Create file .env
