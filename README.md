@@ -24,7 +24,7 @@ DigitupCompany RESTful API clone.
 # Clone this repository
 $ git clone https://github.com/MedjadjiAbdelkadir/DigitupCompany.gitt`
 # Go to the project directory
-$ cd InvoiceMS
+$ cd DigitupCompany
 # Create file .env
 $ cp .env.example .env.
 # Create file .env.testing
