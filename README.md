@@ -11,19 +11,58 @@ DigitupCompany RESTful API clone.
 ## Feature
   - Authentication
   - Task Management
-## Installation
 
-To run this project, you need to have Composer on your system.
+## Requirement
+- [php version 7.3.0](https://www.php.net)
+- [composer](https://getcomposer.org)
 
-1. Clone this repository: `https://github.com/MedjadjiAbdelkadir/DigitupCompany.gitt`
+## How To Use
 
-```cmd
-cd DigitupCompany
-composer install
-cp .env.example .env
-php artisan key:generate
-php artisan migrate:refresh --seed
-php artisan serve
+### Download Repository
+
+```bash
+# Clone this repository
+$ git clone https://github.com/MedjadjiAbdelkadir/DigitupCompany.gitt`
+# Go to the project directory
+$ cd InvoiceMS
+# Create file .env
+$ cp .env.example .env.
+# Create file .env.testing
+$ cp .env.example .env.testing
+
+# Generate Key Of .env
+$ php artisan key:generate.
 ```
 
+### Create DataBase && Migration && Seeding
+```bash
+# Create DataBase
+$ CREATE DATABASE IF NOT EXISTS 'digitupcompany'
+# Go to file .env
+DB_DATABASE=digitupcompany
+# Migration Table
+$ php artisan migrate
+# Seeding table
+$ php artisan db:seed
+```
 
+### Run Project
+
+```bash
+# Run the project
+$ php artisan serve
+```
+
+### Testing 
+```bash
+# Go to file .env.testing
+
+DB_CONNECTION=sqlite
+DB_DATABASE=:memory:
+
+# Test Auth
+$ php artisan test --filter=AuthApiTest
+
+# Test Task
+$ php artisan test --filter=TaskApiTest
+```
